@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="cointiger-sdk",
-    version="0.1.1",
+    version="0.1.2",
     description="sdk for cointiger exchange, containd rest api and websocket api",
 
     url="https://github.com/jianglijie/cointiger-python.git",
