@@ -30,8 +30,8 @@ print(cointiger.trade('btcusdt'))
 # 24小时行情列表
 print(cointiger.tickers())
 
-api_key = 'xxxxxxxx'
-secret = 'xxxxxxxxx'
+api_key = 'xxxxxx'
+secret = 'xxxxxxxxxxx'
 cointiger.set_key_and_secret(api_key, secret)
 
 order_data = {
@@ -51,7 +51,7 @@ print(cointiger.order(dict(order_data, **{'sign': cointiger.get_sign(order_data)
 # 撤销订单
 cancel_data = {
     'api_key': api_key,
-    'orderIdList': ['1', '2'],
+    'orderIdList': '{"btcusdt":["1","2"],"ethusdt":["11","22"]}',
     'time': int(time.time()),
 }
 print(cointiger.batch_cancel(dict(cancel_data, **{'sign': cointiger.get_sign(cancel_data)})))
