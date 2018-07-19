@@ -4,7 +4,7 @@ import ssl
 
 import websocket
 
-from const import Wss_Url, SubType
+from cointiger_sdk.const import Wss_Url, SubType
 
 
 class CoinTigerWebSocket(object):
@@ -73,10 +73,6 @@ class CoinTigerWebSocket(object):
         for item in sub_type_dict.keys():
             if item not in self.sub_dict.keys():
                 exit(1)
-
-    def req_once(self, channel):
-
-
 
     def tick_forever(self):
         if not self.sub_type_dict:

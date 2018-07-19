@@ -1,19 +1,15 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name="cointiger-sdk",
-    version="0.1",
-    keywords=("cointiger", "sdk"),
+    version="0.1.1",
     description="sdk for cointiger exchange, containd rest api and websocket api",
-    license="MIT Licence",
 
     url="https://github.com/jianglijie/cointiger-python.git",
     author="jianglijie",
     author_email="jianglj@jianglijie.net",
 
-    packages=find_packages(),
-    include_package_data=True,
-    platforms="any",
+    packages=["cointiger_sdk", "test"],
     install_requires=[
         "requests",
         "websocket-client",

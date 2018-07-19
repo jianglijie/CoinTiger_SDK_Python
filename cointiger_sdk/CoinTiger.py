@@ -1,8 +1,8 @@
 import hashlib
 import hmac
 
-from const import *
-from function import request_get, request_post
+from cointiger_sdk.const import *
+from cointiger_sdk.function import request_get, request_post
 
 
 class CoinTiger(object):

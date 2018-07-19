@@ -1,7 +1,18 @@
+## CoinTiger SDK
+cointiger sdk contains restful apis and websocket apis for cointiger exchange
+
+## Installation
+- This module is tested on Python 3.6
+- use `pip install cointiger-sdk` to install it
+
+## Examples
+
+#### rest apis
+```
 import time
 
-from CoinTiger import cointiger
-from const import *
+from cointiger_sdk.CoinTiger import cointiger
+from cointiger_sdk.const import SideType, OrderType
 
 # 时间戳
 print(cointiger.timestamp())
@@ -18,7 +29,6 @@ print(cointiger.kline('btcusdt', '1min'))
 print(cointiger.trade('btcusdt'))
 # 24小时行情列表
 print(cointiger.tickers())
-
 
 api_key = 'xxxxxxxx'
 secret = 'xxxxxxxxx'
@@ -57,3 +67,48 @@ print(cointiger.make_detail('btcusdt', '123', int(time.time())))
 
 # 查询订单详情
 print(cointiger.details('btcusdt', '123', int(time.time())))
+```
+
+#### websocket
+```
+from cointiger_sdk.CoinTigerWebsocket import cointiger_websocket
+from cointiger_sdk.const import SubType
+
+
+def ticker_callback(pair, data):
+    print('ticker', pair, data)
+
+
+def trade_ticker_callback(pair, data):
+    print('trade_ticker', pair, data)
+
+
+def depth_callback(pair, data):
+    print('depth', pair, data)
+
+
+def kline_callback(pair, data):
+    print('kline', pair, data)
+
+
+type_dict = {
+    SubType.TradeTicker.value: {
+        'callback': trade_ticker_callback
+    },
+    SubType.Ticker.value: {
+        'callback': ticker_callback
+    },
+    SubType.Depth.value: {
+        'callback': depth_callback,
+        'param': 'step0'
+    },
+    SubType.Kline.value: {
+        'callback': kline_callback,
+        'param': '1min'
+    },
+}
+cointiger_websocket.set_sub_type_dict(type_dict)
+cointiger_websocket.set_pairs(['btcusdt', 'ethusdt'])
+cointiger_websocket.tick_forever()
+
+```

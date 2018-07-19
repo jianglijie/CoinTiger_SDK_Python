@@ -1,5 +1,5 @@
-from CoinTigerWebsocket import cointiger_websocket
-from const import SubType
+from cointiger_sdk.CoinTigerWebsocket import cointiger_websocket
+from cointiger_sdk.const import SubType
 
 
 def ticker_callback(pair, data):
